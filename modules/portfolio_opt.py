@@ -1,5 +1,6 @@
 """Portfolio Optimization — Markowitz efficient frontier."""
 import streamlit as st
+import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from utils.calculators import portfolio_optimization

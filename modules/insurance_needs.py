@@ -1,5 +1,6 @@
 """Insurance Needs — life insurance coverage estimation."""
 import streamlit as st
+import pandas as pd
 import plotly.graph_objects as go
 
 def render():

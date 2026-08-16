@@ -1,5 +1,6 @@
 """Student Loan Planner — standard vs income-driven repayment."""
 import streamlit as st
+import pandas as pd
 import plotly.graph_objects as go
 from utils.calculators import student_loan_payoff
 from utils.constants import STUDENT_LOAN_TYPES
@@ -94,15 +95,18 @@ def render():
     monthly_rate = apr / 12
     balance = principal
     rows = []
+    year_interest = 0
     for month in range(1, 121):
         interest = balance * monthly_rate
         principal_payment = result['standard_monthly'] - interest
         balance -= principal_payment
+        year_interest += interest
         if month % 12 == 0:
             rows.append({"Year": month // 12,
                          "Principal Paid": f"${principal - balance:,.0f}",
-                         "Interest Paid": f"${sum([0]):,.0f}",
+                         "Interest Paid": f"${year_interest:,.0f}",
                          "Remaining Balance": f"${max(0, balance):,.0f}"})
+            year_interest = 0
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
     st.markdown("""

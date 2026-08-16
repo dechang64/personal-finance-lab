@@ -1,5 +1,6 @@
 """FICO Score Simulator — interactive credit score factors."""
 import streamlit as st
+import pandas as pd
 import plotly.graph_objects as go
 from utils.calculators import estimate_fico
 from utils.constants import FICO_FACTORS

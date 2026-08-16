@@ -1,5 +1,6 @@
 """Tax Calculator — federal + state income tax."""
 import streamlit as st
+import pandas as pd
 import plotly.graph_objects as go
 from utils.calculators import calculate_federal_tax
 from utils.constants import TAX_BRACKETS_SINGLE, STATE_TAX
